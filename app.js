@@ -11,7 +11,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("server is running on port 3000");
     
 })
@@ -19,3 +19,5 @@ app.listen(3000, () => {
 app.get("*", (req, res) => {
     res.redirect("/register")
 })
+
+require("dotenv").config()
