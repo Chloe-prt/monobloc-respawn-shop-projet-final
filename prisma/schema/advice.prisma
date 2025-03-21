@@ -1,0 +1,8 @@
+model Advice{
+    id Int @id @default(autoincrement())
+    note String
+    userId Int
+    userAdviceId Int
+    user User @relation("advice",fields: [userId], references: [id])
+    userAdvice User @relation("adviceUser", fields: [userAdviceId], references: [id])
+}

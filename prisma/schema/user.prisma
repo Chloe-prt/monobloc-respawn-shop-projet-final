@@ -1,0 +1,16 @@
+model User{
+    id Int @id @default(autoincrement())
+    firstname String
+    lastname String
+    pseudo String
+    mail String @unique
+    tel Int @unique
+    photo String?
+    adress String?
+    password String
+    products Products[]
+    article Article[]
+    comment Comment[]
+    advice Advice[] @relation("advice")
+    adviceUser Advice[] @relation("adviceUser")
+}
