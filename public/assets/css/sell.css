@@ -1,0 +1,97 @@
+@font-face{
+    font-family: 'montserrat';
+    src: url(/assets/font/Montserrat/static/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url(/assets/font/Montserrat/static/Montserrat-Bold.ttf);
+}
+
+*{
+    font-family: 'montserrat';
+    color: white;
+    margin: 0%;
+}
+
+body {
+    background-color: #282828;
+}
+
+.sell-container {
+    display: flex;
+    flex-direction: column;
+    margin-block: 100px;
+    gap: 30px;
+    article{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .sell-form {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            div {
+                display: flex;
+                flex-direction: column;
+                background-color: #1E1E1E;
+                border-radius: 10px;
+                padding: 10px;
+                box-shadow: 0px 0px 12px 0px rgb(1 1 1 / 52%);;
+                width: 370px;
+                box-sizing: border-box;
+                input, textarea, select {
+                    width: 350px;
+                    border: none;
+                    background-color: #1E1E1E;
+                    color: white;
+                    caret-color: white;
+                }
+                textarea {
+                    height: 150px;
+                }
+                input:focus, textarea:focus, select:focus {
+                    border: none;
+                    outline: none;
+                }
+            }
+
+            .image-upload {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 370px;
+                height: 150px;
+                .image-upload-container {
+                    background-color: #282828;
+                    box-shadow: none;
+                    width: fit-content;
+                    border: 1px solid red;
+                    cursor: pointer;
+                    p {
+                        padding: 5px;
+                    }
+                    input[type="file"] {
+                        display: none;
+                    }
+                }
+            }
+
+            .valid-container {
+                background-color: #282828;
+                box-shadow: none;
+                padding: 0px !important;
+                button {
+                    background-color: red;
+                    border: none;
+                    padding-block: 15px;
+                    border-radius: 10px;
+                    font-size: large;
+                    width: 100%;
+                    margin: 0%;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,11 @@
 const express = require('express')
 const session = require('express-session')
 
+const userRouteur = require('./router/userRouteur')
+const productRouteur = require('./router/productsRouteur')
+require('dotenv').config()
+
+
 const app = express()
 
 app.use(express.static("./public"))
@@ -11,13 +16,17 @@ app.use(session({
     saveUninitialized: true
 }))
 
+app.use(userRouteur)
+app.use(productRouteur)
+
 app.listen(process.env.PORT, () => {
-    console.log("server is running on port 3000");
+    console.log("server is running on port 3001");
     
 })
 
-app.get("*", (req, res) => {
-    res.redirect("/register")
+
+app.use((req, res) => {
+    res.send("Page not found")
 })
 
 require("dotenv").config()

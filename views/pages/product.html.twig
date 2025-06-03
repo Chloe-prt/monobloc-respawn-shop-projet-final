@@ -1,0 +1,61 @@
+{% extends "/layout/base.html.twig" %}
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/product.css">
+{% endblock %}
+{% block main %}
+	<section class="product-container">
+		<div class="info-container">
+			<div class="img-container">
+				<img src="/assets/images/uploads/{{product.photo}}" alt="photo du produit">
+			</div>
+			<div class="title-like">
+				<h2>{{product.name}}</h2>
+				<div class="like-container">
+					<img src="/assets/images/like-hearts-rs.png" alt="Appuyer pour sauvegarder l'article">
+				</div>
+			</div>
+			<div>
+				<p>{{product.description}}</p>
+			</div>
+			<div class="price-delivery">
+				<p>{{product.price}}€</p>
+				<p>Livraison à partir de 3,49€</p>
+			</div>
+			<p>Publié le :
+				{{ product.date|date('d/m/Y H:i') }}</p>
+		</div>
+		<div class="profil-seller">
+			<div class="profil-seller-container">
+				<div class="avatar-name">
+					<div class="avatar-profil-seller">
+						<img src="/assets/images/default-avatar.jpg" alt="photo profil">
+					</div>
+					<div class="name-surname-seller">
+						<p>{{product.user.pseudo}}</p>
+						<p>{{product.user.firstname}}
+							{{product.user.lastname}}</p>
+					</div>
+				</div>
+				<div class="advice-adress-seller">
+					<div class="advice-seller">
+						<span class="star">&#9733;</span>
+						<span class="star">&#9733;</span>
+						<span class="star">&#9733;</span>
+						<span class="star">&#9733;</span>
+						<span class="star">&#9734;</span>
+					</div>
+					{% if product.user.adress %}
+						<p>{{product.user.adress}}</p>
+					{% else %}
+
+                        <p>Adresse non renseignée</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="buy-contact">
+			<a href="">Acheter</a>
+			<a href="">Contacter le vendeur</a>
+		</div>
+	</section>
+{% endblock %}

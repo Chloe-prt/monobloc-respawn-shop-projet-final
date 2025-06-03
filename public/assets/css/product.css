@@ -1,0 +1,153 @@
+@font-face{
+    font-family: 'montserrat';
+    src: url(/assets/font/Montserrat/static/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url(/assets/font/Montserrat/static/Montserrat-Bold.ttf);
+}
+
+*{
+    font-family: 'montserrat';
+    color: white;
+    margin: 0%;
+}
+
+body {
+    background-color: #282828;
+
+}
+
+.product-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .info-container, .profil-seller {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 400px;
+        div {
+            p {
+                width: 400px;
+            }
+        }
+        .img-container {
+            img {
+                width: 400px;
+                height: 340px;
+                border-radius: 20px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        
+    } 
+    .info-container {
+        .title-like {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            h2 {
+                font-size: large;
+            }
+            .like-container {
+                display: flex;
+                justify-content: end;
+                width: min-content;
+                padding-left: 10px;
+                img {
+                    width: 30px;
+                }
+            }
+        }
+        .price-delivery {
+            display: flex;
+            gap: 30px;
+            p {
+                width: fit-content;
+            }
+            :first-child {
+                font-size: large;
+                font-weight: 600;
+            }
+            :last-child {
+                background-color: red;
+                padding-inline: 30px;
+                padding-block: 2px;
+                border-radius: 10px;
+                font-size: smaller;
+            }
+        }
+    }
+    .profil-seller {
+        display: flex;
+        margin-top: 20px;
+        background-color: #1E1E1E;
+        box-shadow: 0px 0px 12px 0px rgb(1 1 1 / 52%);;
+        .profil-seller-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: start;
+            .avatar-name {
+                display: flex;
+                gap: 10px;
+                width: fit-content;
+                .avatar-profil-seller {
+                    width: fit-content;
+                    img {
+                        width: 40px;
+                        border-radius: 100%;
+                    }
+                }
+                .name-surname-seller {
+                    width: fit-content;
+                    p {
+                        width: fit-content;
+                    }
+                }
+            }
+            .advice-adress-seller {
+                display: flex;
+                flex-direction: column;
+                .advice-seller {
+                    span {
+                        color: yellow;
+                    }
+                }
+                p {
+                    width: fit-content;
+                    
+                }
+            }
+        }
+    }
+    .buy-contact {
+        margin-top: 20px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;  
+        a {
+            width: 400px;
+            padding-block: 10px;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-size: large;
+            font-weight: 700;
+        }
+        :first-child {
+            background-color: red;
+        }
+        :last-child {
+            background-color: white;
+            color: black;
+        }
+    }
+}

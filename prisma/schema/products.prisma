@@ -4,9 +4,10 @@ model Products{
     photo String
     category String
     brand String
-    support String
-    date Int
+    state String
+    date DateTime @default(now())
     price Int
+    description String
     userId Int
     user User @relation(fields: [userId], references: [id])
 }

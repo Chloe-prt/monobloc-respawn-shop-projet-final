@@ -1,0 +1,79 @@
+.header-style {
+    width: 130%; /* Augmente la largeur pour étendre la courbe */
+    background-color: red;
+    border-bottom-left-radius: 100vw 70px;
+    border-bottom-right-radius: 100vw 70px;
+    position: relative;
+    left: -15%; /* Recentre l'élément pour masquer les côtés */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    
+    .logo-container {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        img {
+            width: 70px;
+            position: relative;
+        }
+    }
+
+    .header-connect {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        align-items: center;
+        margin-bottom: 7px;
+        .logo-container-connected {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 50px;
+            }
+        }
+        .search-bar {
+            padding-inline: 6px;
+            padding-block: 5px;
+            background-color: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center; 
+            input {
+                border: none;
+                color: black;
+                margin-left: 10px;
+            }
+            input:focus {
+                outline: none;
+                border: none;
+            }
+            button {
+                background-color: white;
+                border: none;
+            }
+            img{
+                width: 17px;
+            }
+        }
+
+        .link-profil {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 50px;
+            }
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+}

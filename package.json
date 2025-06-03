@@ -9,11 +9,12 @@
   "author": "chloe",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.5.0",
+    "@prisma/client": "^6.8.1",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
+    "multer": "^2.0.0",
     "prisma": "^6.5.0",
     "twig": "^1.17.1"
   }

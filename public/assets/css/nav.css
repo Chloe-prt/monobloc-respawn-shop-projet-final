@@ -1,0 +1,28 @@
+.nav-style {
+    width: 130%;
+    background-color: red;
+    border-top-left-radius: 100vw 70px;
+    border-top-right-radius: 100vw 70px;
+    position: relative;
+    left: -15%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 7px;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+            img {
+                width: 40px;
+            }
+        }
+    }
+}

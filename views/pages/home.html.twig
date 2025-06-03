@@ -1,0 +1,37 @@
+{% extends "../layout/base.html.twig" %}
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/home.css">
+{% endblock %}
+{% block main %}
+    <main>
+        <section class="welcome">
+            <div class="img-welcome">
+                <img src="/assets/images/photo-acueille-ordi-rouge-rs.jpg" alt="image d'un ordinateur noir avec clavier rouge lumineux, bouton vendre en bas à droite">
+                <a href="/sell">Vendre</a>
+            </div>
+        </section>
+        <section class="new">
+            <div class="title-new">
+                <h2>Nouveauté</h2>
+            </div>
+            <div class="repertory-article">
+            {% for product in products %}
+                <div class="product-container" onclick="window.location.href='/product/{{product.id}}'">
+                    <img src="/assets/images/uploads/{{product.photo}}" alt="photo">
+                    <p class="title-product">{{product.name}}</p>
+                    <p class="product-user">Publié par : {{product.user.pseudo}}</p>
+                    <div>
+                        <p>{{product.price}}€</p>
+                        <p>{{product.state}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+        <section class="favori">
+            <div class="title-you">
+                <h2>Pour vous</h2>
+            </div>
+        </section>
+    </main>
+{% endblock %}

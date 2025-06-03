@@ -1,0 +1,129 @@
+@font-face{
+    font-family: 'montserrat';
+    src: url(/assets/font/Montserrat/static/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url(/assets/font/Montserrat/static/Montserrat-Bold.ttf);
+}
+
+*{
+    font-family: 'montserrat';
+    color: white;
+    margin: 0%;
+}
+
+body {
+    background-color: #282828;
+}
+
+.welcome { 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 120px;
+    .img-welcome {
+        position: relative;
+        img {
+            width: 400px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            object-position: center;
+        }
+        a {
+            padding-block: 5px;
+            padding-inline: 30px;
+            background-color: red;
+            border-radius: 12px;
+            text-decoration: none;
+            position: absolute;
+            top: 75%;
+            left: 65%;
+        }
+    }
+}
+
+.new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    div {
+        width: 400px;
+    }
+    .repertory-article {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 20px;
+        border-radius: 10px;
+        padding-block: 10px;
+
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 130px;
+            padding: 10px;
+            background-color: #1E1E1E;
+            box-shadow: 0px 0px 12px 0px rgb(1 1 1 / 52%);;
+            border-radius: 10px;
+
+            flex: 0 0 25%;
+            scroll-snap-align: start;
+            
+
+            img{
+                width: 130px;
+                height: 120px !important;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 10px;
+            }
+            div {
+                width: 130px;
+                font-size: small;
+                justify-content: space-between;
+                display: flex;
+                flex-direction: row;
+                :last-child {
+                    color: rgba(255, 255, 255, 0.695);
+                }
+            }
+            
+            .title-product {
+                width: 130px;
+                height: 50px;
+                font-size: small;
+            }
+
+            .product-user {
+                width: 130px;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.favori {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    div {
+        width: 400px;
+    }
+}

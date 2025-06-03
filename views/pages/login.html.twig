@@ -1,0 +1,48 @@
+{% extends "/layout/base.html.twig" %}
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/login.css">
+{% endblock %}
+{% block main %}
+    <section class="login">
+        <article class="login-container">
+            <form action="/login" method="post" class="login-form">
+                <div class="title-login">
+                    <h1>Connexion</h1>
+                </div>
+                <div class="identi-login">
+                    <label for="identifiant">Mail ou tel</label>
+                    <input id="identifiant" type="text" name="identifiant">
+                </div>
+                <div class="password-login">
+                    <label for="password">Mot de passe</label>
+                    <input id="password" type="password" name="password">
+                </div>
+                <div class="separation">
+                    <div class="first-bar">
+
+                    </div>
+                    <div class="or">
+                        <p>ou</p>
+                    </div>
+                    <div class="seconde-bar">
+
+                    </div>
+                </div>
+                <div class="google-connect">
+                    <p>Google</p>
+                    <img src="/assets/images/google-logo-rs.svg" alt="logo google">
+                </div>
+                <div class="fb-connect">
+                    <p>Facebook</p>
+                    <img src="/assets/images/facebook-logo-rs.svg" alt="logo facebook">
+                </div>
+                <div class="link-register">
+                    <a href="/register">S'inscrire</a>
+                </div>
+                <div class="valid-login">
+                    <button type="submit">Connecter</button>
+                </div>
+            </form>
+        </article>
+    </section>
+{% endblock %}
