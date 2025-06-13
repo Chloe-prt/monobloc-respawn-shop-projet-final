@@ -21,6 +21,7 @@ body {
 
 .product-container {
     margin-top: 100px;
+    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,6 +116,7 @@ body {
             .advice-adress-seller {
                 display: flex;
                 flex-direction: column;
+                align-items: end;
                 .advice-seller {
                     span {
                         color: yellow;
@@ -127,7 +129,7 @@ body {
             }
         }
     }
-    .buy-contact {
+    .buy-contact, .update-delete {
         margin-top: 20px;
         width: 400px;
         display: flex;

@@ -1,0 +1,40 @@
+{% extends "/layout/base.html.twig" %}
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/param-profil.css">
+{% endblock %}
+{% block main %}
+    <section>
+        <h2>Modifier mon profil</h2>
+        <div class="form-update">
+            <form action="/updateprofil/:id" method="post">
+                <div class="name-update">
+                    <label class="label-update" for="lastname">Modifier mon nom</label>
+                    <input class="hidden input-update" placeholder="Nouveau nom" type="text" id="lastname" name="lastname" value="{{ user.lastname }}" required>
+                </div>
+                <div class="fname-update">
+                    <label class="label-update" for="firstname">Modifier mon prénom</label>
+                    <input class="hidden input-update" placeholder="Nouveau prénom" type="text" id="firstname" name="firstname" value="{{ user.firstname }}" required>
+                </div>
+                <div class="pseudo-update">
+                    <label class="label-update" for="pseudo">Modifier mon pseudo</label>
+                    <input class="hidden input-update" placeholder="nouveau pseudo" type="text" id="pseudo" name="pseudo" value="{{ user.pseudo }}" required>
+                </div>
+                <div class="photo-update">
+                    <label class="label-update" for="photo">Modifier ma photo</label>
+                    <input class="hidden input-update" type="file" id="photo" name="photo" required>
+                </div>
+                <div class="mail-update">
+                    <label class="label-update" for="mail">Modifier mon mail</label>
+                    <input class="hidden input-update" placeholder="Nouveau mail" type="text" id="mail" name="mail" value="{{ user.mail }}" required>
+                </div>
+                <div class="tel-update">
+                    <label class="label-update" for="tel">Modifier mon numéro de téléphone</label>
+                    <input class="hidden input-update" placeholder="Nouveau numéro de téléphone" type="text" id="tel" name="tel" value="{{ user.tel }}" required>
+                </div>
+                <div>
+                    <button type="submit">Valider</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

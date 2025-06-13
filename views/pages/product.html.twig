@@ -53,9 +53,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="buy-contact">
-			<a href="">Acheter</a>
-			<a href="">Contacter le vendeur</a>
-		</div>
+		{% if product.user.id == user.id %}
+			<div class="update-delete">
+				<a href="/productupdate/{{product.id}}">Modifier</a>
+				<a href="/productdelete/{{product.id}}">Supprimer</a>
+			</div>
+		{% else %}
+			<div class="buy-contact">
+				<a href="">Acheter</a>
+				<a href="">Contacter le vendeur</a>
+			</div>
+		{% endif %}
+		
+		
 	</section>
 {% endblock %}

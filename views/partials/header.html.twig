@@ -9,16 +9,19 @@
                 <img src="/assets/images/logo-respawn-shop-blanc.png" alt="logo respawn shop">
             </div>
             <div class="search-bar">
-                <input type="text" id="search-input">
-                <button type="submit" id="search-button">
-                    <img src="/assets/images/search-loupe-rs.png" alt="logo loupe">
-                </button>
+                <form action="/search" method="get">
+                    <input type="text" name="search" id="search-input" placeholder="Recherche" required>
+                    <button type="submit" id="search-button">
+                        <img src="/assets/images/search-loupe-rs.png" alt="logo loupe">
+                    </button>
+                </form>
             </div>
             <div class="link-profil">
-                <img src="/assets/images/face-perso-rs.png" alt="image lien vers profil">
+                <a href="/myprofil">
+                    <img src="/assets/images/face-perso-rs.png" alt="image lien vers profil">
+                </a>
             </div>
         </div>
         {% endif %}
-        
     </div>
 </header>

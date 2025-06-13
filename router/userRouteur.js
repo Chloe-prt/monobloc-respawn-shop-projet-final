@@ -21,7 +21,7 @@ userRouteur.post('/register', async (req, res) => {
             
             throw { confpass: "Les mots de passe ne correspondent pas" };
         } else {
-            const user = await prisma.user.create({ // Utilisation correcte de prisma
+            const user = await prisma.user.create({ 
                 data: {
                     firstname,
                     lastname,
@@ -58,6 +58,7 @@ userRouteur.post("/login", async(req, res) => {
                 ]
             }
         })
+        
         if (user) {
             if (await bcrypt.compare(req.body.password, user.password)) {
                 req.session.user = user;
@@ -85,6 +86,8 @@ userRouteur.get('/login', async (req, res) => {
     res.render('pages/login.html.twig');
 })
 
+
+
 userRouteur.get('/', authguard, async (req, res) => {
     const products = await prisma.products.findMany({
 
@@ -97,6 +100,73 @@ userRouteur.get('/', authguard, async (req, res) => {
 
 userRouteur.get('/sell', authguard, async (req, res) => {
     res.render('pages/sell.html.twig')
+})
+
+userRouteur.get('/param', authguard, async (req, res) => {
+    res.render('pages/param.html.twig', { isConnected: true });
+})
+
+userRouteur.get('/paramprofil', authguard, async (req, res) => {
+    res.render('pages/param-profil.html.twig', { isConnected: true, user: req.session.user});
+})
+
+userRouteur.get('/myprofil', authguard, async (req, res) => {
+    
+    const user = req.session.user;
+    
+    const userId = await prisma.user.findUnique({
+        where: { id: user.id },
+        include: {
+            products: true, // Inclure les produits associés à l'utilisateur
+        }
+    });
+    console.log(userId);
+    
+    
+    res.render('pages/myprofil.html.twig', { isConnected: true, user: userId  });
+})
+
+userRouteur.get('/updateprofil/:id', authguard, async (req, res) => {
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                id: parseInt(req.session.user.id)
+            }
+        })
+
+        res.render('pages/myprofil.html.twig')
+    } catch (error) {
+        console.log(error);
+        res.render('pages/param-profil.html.twig');
+    }
+})
+
+userRouteur.post('/updateprofil/:id', authguard, async (req, res) => {
+    try {
+        const { firstname, lastname, pseudo, mail, tel, photo } = req.body;
+        const user = await prisma.user.update({
+            where: {
+                id: parseInt(req.session.user.id)
+            },
+            data: {
+                firstname,
+                lastname,
+                pseudo,
+                mail,
+                tel: parseInt(tel),
+                photo : req.file ? req.file.filename : "default-avatar.png"
+            }
+        })
+    } catch (error) {
+        console.log(error);
+        res.redirect('/paramprofil');
+        
+    }
+})
+
+userRouteur.get('/logout', authguard, async (req, res) => {
+    req.session.destroy()
+    res.redirect('/login')
 })
 
 module.exports = userRouteur;

@@ -7,7 +7,7 @@
     <main>
         <section class="sell-container">
             <article>
-                <form action="/sell" method="post" class="sell-form" enctype="multipart/form-data">
+                <form action={% if product %}"/productupdate/{{product.id}}"{% else %}"/sell" {% endif %} method="post"  class="sell-form" enctype="multipart/form-data">
                     <div class="image-upload">
                         <div class="image-upload-container">
                             <label for="photo">
@@ -18,15 +18,15 @@
                     </div>
                     <div>
                         <label for="name">Titre</label>
-                        <input id="name" type="text" name="name">
+                        <input id="name" type="text" name="name" value="{{ product.name ?? '' }}" required>
                     </div>
                     <div>
                         <label for="price">Prix</label>
-                        <input id="price" type="text" name="price">
+                        <input id="price" type="text" name="price" value="{{ product.price ?? '' }}" required>
                     </div>
                     <div>
                         <label for="category">Catégorie</label>
-                        <select name="category" id="category">
+                        <select name="category" id="category" value="{{ product.category ?? '' }}" required>
                             <option value="videogame">Jeux vidéo</option>
                             <option value="console">Console</option>
                             <option value="hightech">High Tech</option>
@@ -42,11 +42,11 @@
                     </div>
                     <div>
                         <label for="brand">Marque</label>
-                        <input id="brand" type="text" name="brand">
+                        <input id="brand" type="text" name="brand" value="{{ product.brand ?? '' }}" required>
                     </div>
                     <div>
                         <label for="state">État</label>
-                        <select name="state" id="state">
+                        <select name="state" id="state" value="{{ product.state ?? '' }}" required>
                             <option value="neuf">État neuf</option>
                             <option value="perfect">Parfait état</option>
                             <option value="good">Bon état</option>
@@ -56,7 +56,7 @@
                     </div>
                     <div>
                         <label for="description">Description</label>
-                        <textarea name="description" id="description"></textarea>
+                        <textarea name="description" id="description"  >{{ product.description ?? '' }}</textarea>
                     </div>
                     <div class="valid-container">
                         <button type="submit">Vendre</button>

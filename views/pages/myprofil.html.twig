@@ -1,0 +1,68 @@
+{% extends "/layout/base.html.twig" %}
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/myprofil.css">
+{% endblock %}
+{% block main %}
+    <main>
+        <section class="lead">
+            <div class="profil-container">
+                <div class="avatar-name">
+                    <div class="avatar">
+                        <img src="/assets/images/default-avatar.jpg" alt="">
+                    </div>
+                    <div class="name-surname">
+                        <p>{{ user.pseudo }}</p>
+                        <p>{{ user.firstname }} {{ user.lastname }}</p>
+                    </div>
+                </div>
+                <div class="advice-adress">
+                    <div class="advice-star">
+                        <span class="star">&#9733;</span>
+						<span class="star">&#9733;</span>
+						<span class="star">&#9733;</span>
+						<span class="star">&#9733;</span>
+						<span class="star">&#9734;</span>
+                    </div>
+                    <div class="adress">
+                        {% if product.user.adress %}
+						    <p>{{product.user.adress}}</p>
+					    {% else %}
+                            <p>Adresse non renseignée</p>
+					    {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="headings-container">
+                <p>Articles</p>
+                <p>Avis</p>
+            </div>
+        </section>
+        <section class="myarticles">
+            <div class="article-container">
+                {% for product in user.products %}
+                <div class="product-container" >
+                    <a href="/product/{{product.id}}">
+                        <img src="/assets/images/uploads/{{product.photo}}" alt="photo">
+                    </a>
+                    <div class="title-product">
+                        <p>{{product.name}}</p>
+                        <div class="btn-modal">
+                            <img src="/assets/images/3point-rs-rogne.png" alt="options article">
+                        </div>
+                    </div>
+                    <p class="product-user">{{product.date|date('d/m/Y H:i')}}</p>
+                    <div>
+                        <p>{{product.price}}€</p>
+                        <p>{{product.state}}</p>
+                    </div>
+                      
+                    <div class="modal-option hidden">
+                        <a href="/productupdate/{{product.id}}">Modifier</a>
+                        <a href="/productdelete/{{product.id}}">Supprimer</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

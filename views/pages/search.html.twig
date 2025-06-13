@@ -1,0 +1,33 @@
+{% extends "/layout/base.html.twig" %}
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/search.css">
+{% endblock %}
+{% block main %}
+    <section>
+        <div class="title">
+            <h2>Résultats pour "{{ search }}"</h2>
+            <div class="filter">
+                <img src="/assets/images/filter-rs.png" alt="">
+            </div>
+        </div>
+        {% if empty %}
+            <p>Aucun resultat touvé</p>
+        {% else %}
+            <div class="search-results">
+                {% for product in results %}
+                    <div class="result-container">
+                        <a href="/product/{{product.id}}">
+                            <img src="/assets/images/uploads/{{product.photo}}" alt="photo">
+                        </a>
+                        <p class="title-product">{{product.name}}</p>
+                        <p class="product-user">Publié par : {{product.user.pseudo}}</p>
+                        <div>
+                            <p>{{product.price}}</p>
+                            <p>{{product.state}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

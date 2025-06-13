@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 const  authguard = require("../services/authguard.js")
 const upload = require('../services/multer.js')
+const { parse } = require('dotenv')
 
 const productsRouteur = require('express').Router()
 const prisma = new PrismaClient()
@@ -41,8 +42,86 @@ productsRouteur.get('/product/:id', authguard, async (req, res) => {
             user: true
         }
     })
-    res.render('pages/product.html.twig', { product, isConnected: true })
+    res.render('pages/product.html.twig', { product, isConnected: true, user: req.session.user  })
 })
 
+
+productsRouteur.get('/productdelete/:id', authguard, async (req, res) => {
+    try {
+        const product = await prisma.products.delete({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+        res.redirect('/myprofil')
+    } catch (error) {
+        console.log(error);
+        res.redirect('/myprofil')
+    }
+})
+
+productsRouteur.get('/productupdate/:id', authguard, async (req, res) => {
+    try {
+        const product = await prisma.products.findUnique({
+            where: {
+                id:parseInt(req.params.id)
+            }
+        })
+        
+        res.render('pages/sell.html.twig', {
+            productId : product.id,
+            product : product,
+        })
+    } catch (error) {
+        console.log(error);
+        res.render('pages/sell.html.twig')
+    }
+})
+
+productsRouteur.post('/productupdate/:id', upload.single("photo"), authguard, async (req, res) => {
+    try {
+        const {name, photo, category, brand, state, price, description} = req.body
+        const product = await prisma.products.update({
+            where: {
+                id:parseInt(req.params.id)
+            }, 
+            data: {
+                name,
+                photo : req.file ? req.file.filename : "default.jpg", 
+                category,
+                brand,
+                state,
+                price: parseInt(price),
+                description
+            }
+        })
+        res.redirect('/myprofil')
+    } catch (error) {
+        console.log(error);
+        res.render('/myprofil')
+    }
+})
+
+productsRouteur.get('/search', authguard, async (req, res) => {
+    const search = req.query.search
+    console.log(search);
+    try {
+        const results = await prisma.products.findMany({
+            where: {
+                OR: [
+                    {name: { contains: search }},
+                    {description: { contains: search }},
+                    {category: { contains: search }},
+                    {brand: { contains: search }}
+                ]
+            }
+        })
+        console.log(results);
+        res.render('pages/search.html.twig', {results, search, isConnected: true})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("marche pas");
+    }
+})
 
 module.exports = productsRouteur

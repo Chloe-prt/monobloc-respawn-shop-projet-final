@@ -1,0 +1,54 @@
+{% extends "/layout/base.html.twig" %}
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/param.css">
+{% endblock %}
+{% block main %}
+    <section class="param-section">
+        <div class="param-container">
+            <ul>
+                <li>
+                    <a href="/paramprofil">
+                        <img src="/assets/images/param-account.png" alt="">
+                        <p>Modifier mon profil</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="/assets/images/password-rs.png" alt="">
+                        <p>Changer mon mot de passe</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="/assets/images/lock-confidentiality-rs.png" alt="">
+                        <p>Confidentialité</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="/assets/images/wallet-rs.png" alt="">
+                        <p>Mes transactions</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="/assets/images/bank-rs.png" alt="">
+                        <p>Moyen de paiement</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="/assets/images/info-rs.png" alt="">
+                        <p>Aide et info</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout">
+                        <img src="/assets/images/deco-rs.png" alt="">
+                        <p>Déconnexion</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
