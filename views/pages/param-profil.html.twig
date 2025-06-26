@@ -6,7 +6,7 @@
     <section>
         <h2>Modifier mon profil</h2>
         <div class="form-update">
-            <form action="/updateprofil/:id" method="post">
+            <form action="/updateprofil/{{user.id}}" method="post" enctype="multipart/form-data">
                 <div class="name-update">
                     <label class="label-update" for="lastname">Modifier mon nom</label>
                     <input class="hidden input-update" placeholder="Nouveau nom" type="text" id="lastname" name="lastname" value="{{ user.lastname }}" required>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="photo-update">
                     <label class="label-update" for="photo">Modifier ma photo</label>
-                    <input class="hidden input-update" type="file" id="photo" name="photo" required>
+                    <input class="hidden input-update" type="file" id="photo" name="photo" accept="images/*" autocomplete="off" required>
                 </div>
                 <div class="mail-update">
                     <label class="label-update" for="mail">Modifier mon mail</label>

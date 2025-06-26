@@ -1,4 +1,5 @@
 const multer = require("multer")
+
 const mimeType = [
     'image/jpg',
     'image/jpeg',
@@ -11,7 +12,11 @@ const mimeType = [
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './public/assets/images/uploads')
+        if (file.fieldname === 'avatar') {
+            cb(null, './public/assets/images/avatar'); // Dossier pour les avatars utilisateur
+        } else {
+            cb(null, './public/assets/images/uploads'); // Dossier pour d'autres fichiers
+        }
     },
     filename: function (req, file, cb) {
         let extArray = file.mimetype.split("/");

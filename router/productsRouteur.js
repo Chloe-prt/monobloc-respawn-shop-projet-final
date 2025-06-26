@@ -6,16 +6,25 @@ const { parse } = require('dotenv')
 const productsRouteur = require('express').Router()
 const prisma = new PrismaClient()
 
+const stateChange = {
+    "neuf": "État Neuf",
+    "perfect": "Parfait état",
+    "good": "Bon état",
+    "ok": "État correct",
+    "no": "Pour pièces"
+}
+
 productsRouteur.post('/sell', authguard, upload.single("photo"), async(req, res) => {
     try {
         const {name, photo, category, brand, state, price, description} = req.body
+        const stateValue = stateChange[state] || state;
         const products = await prisma.products.create({
             data : {
                 name,
                 photo : req.file ? req.file.filename : "default.jpg", 
                 category,
                 brand,
-                state,
+                state: stateValue,
                 price: parseInt(price),
                 description,
                 user: {
@@ -39,7 +48,11 @@ productsRouteur.get('/product/:id', authguard, async (req, res) => {
             id: parseInt(productId)
         },
         include: {
-            user: true
+            user: {
+                include: {
+                    adress:true
+                }
+            }
         }
     })
     res.render('pages/product.html.twig', { product, isConnected: true, user: req.session.user  })
@@ -81,16 +94,17 @@ productsRouteur.get('/productupdate/:id', authguard, async (req, res) => {
 productsRouteur.post('/productupdate/:id', upload.single("photo"), authguard, async (req, res) => {
     try {
         const {name, photo, category, brand, state, price, description} = req.body
+        const stateValue = stateChange[state] || state;
         const product = await prisma.products.update({
             where: {
                 id:parseInt(req.params.id)
             }, 
             data: {
                 name,
-                photo : req.file ? req.file.filename : "default.jpg", 
+                photo : req.file ? req.file.filename : req.body.existingPhoto, 
                 category,
                 brand,
-                state,
+                state: stateValue,
                 price: parseInt(price),
                 description
             }
@@ -114,6 +128,9 @@ productsRouteur.get('/search', authguard, async (req, res) => {
                     {category: { contains: search }},
                     {brand: { contains: search }}
                 ]
+            },
+            include: {
+                user: true
             }
         })
         console.log(results);

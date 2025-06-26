@@ -14,6 +14,9 @@
                                 <p>+ Ajouter photos</p>
                             </label>
                             <input type="file" name="photo" id="photo" accept="images/*" autocomplete="off">
+                            {% if product and product.photo %}
+                                <input type="hidden" name="existingPhoto" value="{{ product.photo }}">
+                            {% endif %}
                         </div>
                     </div>
                     <div>
@@ -31,11 +34,12 @@
                             <option value="console">Console</option>
                             <option value="hightech">High Tech</option>
                             <option value="dvd">Films et série</option>
+                            <option value="book">Livre</option>
                             <option value="cd">CD</option>
                             <option value="figurine">Figurine</option>
                             <option value="replica">Réplique</option>
                             <option value="card">Carte à collectionner</option>
-                            <option value="game">Jeux de société</option>
+                            <option value="game">Jeux et jouet</option>
                             <option value="goodies">Goodies</option>
                             <option value="other">Autre</option>
                         </select>

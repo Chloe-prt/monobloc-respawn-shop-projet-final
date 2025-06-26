@@ -1,0 +1,8 @@
+model UserPreference {
+  userId       Int
+  preferenceId Int
+  user         User       @relation(fields: [userId], references: [id])
+  preference   Preference @relation(fields: [preferenceId], references: [id])
+
+  @@id([userId, preferenceId])
+}

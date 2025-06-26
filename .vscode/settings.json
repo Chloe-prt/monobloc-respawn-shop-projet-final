@@ -1,0 +1,8 @@
+{
+    "editor.inlineSuggest.edits.renderSideBySide": "never",
+    "editor.inlineSuggest.edits.allowCodeShifting": "never",
+    "github.copilot.nextEditSuggestions.fixes": false,
+    "editor.experimentalEditContextEnabled": false,
+    "editor.inlayHints.enabled": "off",
+    "files.trimTrailingWhitespaceInRegexAndStrings": false
+}

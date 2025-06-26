@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'montserrat';
+    src: url(/assets/font/Montserrat/static/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url(/assets/font/Montserrat/static/Montserrat-Bold.ttf);
+}
+
+* {
+    font-family: 'montserrat';
+    color: white;
+    margin: 0%;
+}
+
+body {
+    background-color: #282828;
+}
+
+section {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    display: flex;
+    justify-content: center;
+
+    article {
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 400px;
+
+            .title {
+                label {
+                    font-size: x-large;
+                    font-weight: 600;
+                }
+            }
+
+            div {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+
+                input {
+                    appearance: none;
+                    position: absolute;
+                }
+
+                input:checked {
+                    appearance: none;
+                    position: absolute;
+                }
+
+                input[type="checkbox"] {
+                    display: none;
+                }
+
+                input[type="checkbox"] + label {
+                    width: 50px;
+                    height: 22px;
+                    border: solid 5px white;
+                    border-radius: 20px;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    cursor: pointer;
+                }
+
+                input[type="checkbox"] + label span {
+                    display: block;
+                    width: 15px;
+                    height: 15px;
+                    background-color: white;
+                    border-radius: 100%;
+                    position: absolute;
+                    left: 4px;
+                    top: 50%;
+                    transform: translateY(-50%) translateX(0);
+                    transition: transform 0.4s , background-color 0.4s;
+                }
+
+                input[type="checkbox"]:checked + label {
+                    border: solid 5px red;
+                }
+
+                input[type="checkbox"]:checked + label span {
+                    background-color: red;
+                    transform: translateY(-50%) translateX(26px);
+                }
+
+                button {
+                    background-color: red;
+                    border: none;
+                    padding-block: 15px;
+                    border-radius: 10px;
+                    font-size: large;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

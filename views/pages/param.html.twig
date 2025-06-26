@@ -7,21 +7,32 @@
         <div class="param-container">
             <ul>
                 <li>
-                    <a href="/paramprofil">
+                    <a href="/updateprofil/{{ user.id }}">
                         <img src="/assets/images/param-account.png" alt="">
                         <p>Modifier mon profil</p>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/updatepassword/{{ user.id }}">
                         <img src="/assets/images/password-rs.png" alt="">
                         <p>Changer mon mot de passe</p>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <img src="/assets/images/lock-confidentiality-rs.png" alt="">
-                        <p>Confidentialité</p>
+             
+                    <a {% if user.adress not null %}href="/adressupdate/{{user.id}}"{% else %}href="/adress"{% endif %}>
+                        <img src="/assets/images/adress-rs.png" alt="">
+                        {% if user.adress %}
+                            <p>Modifier mon adresse</p>
+                        {% else %}
+                            <p>Ajouter une adresse</p>
+                        {% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="/preferences/{{ user.id }}">
+                        <img src="/assets/images/preference-rs.png" alt="">
+                        <p>Préférences</p>
                     </a>
                 </li>
                 <li>

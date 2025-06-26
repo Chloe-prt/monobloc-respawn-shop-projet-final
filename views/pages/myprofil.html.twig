@@ -8,7 +8,7 @@
             <div class="profil-container">
                 <div class="avatar-name">
                     <div class="avatar">
-                        <img src="/assets/images/default-avatar.jpg" alt="">
+                        <img src="/assets/images/uploads/{{user.photo ? user.photo : 'default-avatar.jpg'}}" alt="photo de profil">
                     </div>
                     <div class="name-surname">
                         <p>{{ user.pseudo }}</p>
@@ -24,8 +24,8 @@
 						<span class="star">&#9734;</span>
                     </div>
                     <div class="adress">
-                        {% if product.user.adress %}
-						    <p>{{product.user.adress}}</p>
+                        {% if user.adress %}
+						    <p>{{user.adress.departement}}</p>
 					    {% else %}
                             <p>Adresse non renseignée</p>
 					    {% endif %}

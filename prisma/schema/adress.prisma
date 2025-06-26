@@ -1,0 +1,12 @@
+model Adress{
+    id Int @id @default(autoincrement())
+    street String
+    city String
+    code Int
+    departement String
+    region String
+
+    User User[]
+
+    @@unique([street, city, code, departement, region])
+}

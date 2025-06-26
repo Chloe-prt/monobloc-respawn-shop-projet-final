@@ -6,11 +6,16 @@ model User{
     mail String @unique
     tel Int @unique
     photo String?
-    adress String?
+
+
+    adressId Int? 
+    adress Adress? @relation(fields: [adressId], references: [id])
+
     password String
     products Products[]
     article Article[]
     comment Comment[]
     advice Advice[] @relation("advice")
     adviceUser Advice[] @relation("adviceUser")
+    preferences UserPreference[]
 }

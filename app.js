@@ -3,6 +3,7 @@ const session = require('express-session')
 
 const userRouteur = require('./router/userRouteur')
 const productRouteur = require('./router/productsRouteur')
+const adressRouteur = require('./router/adressRouteur')
 require('dotenv').config()
 
 
@@ -18,6 +19,7 @@ app.use(session({
 
 app.use(userRouteur)
 app.use(productRouteur)
+app.use(adressRouteur)
 
 app.listen(process.env.PORT, () => {
     console.log("server is running on port 3001");

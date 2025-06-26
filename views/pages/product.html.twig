@@ -27,9 +27,9 @@
 		<div class="profil-seller">
 			<div class="profil-seller-container">
 				<div class="avatar-name">
-					<div class="avatar-profil-seller">
-						<img src="/assets/images/default-avatar.jpg" alt="photo profil">
-					</div>
+					<a href="/profil/{{product.user.id}}" class="avatar-profil-seller">
+						<img src="/assets/images/uploads/{{product.user.photo ? product.user.photo : 'default-avatar.jpg'}}" alt="photo profil">
+					</a>
 					<div class="name-surname-seller">
 						<p>{{product.user.pseudo}}</p>
 						<p>{{product.user.firstname}}
@@ -45,7 +45,7 @@
 						<span class="star">&#9734;</span>
 					</div>
 					{% if product.user.adress %}
-						<p>{{product.user.adress}}</p>
+						<p>{{product.user.adress.departement}}</p>
 					{% else %}
 
                         <p>Adresse non renseignée</p>

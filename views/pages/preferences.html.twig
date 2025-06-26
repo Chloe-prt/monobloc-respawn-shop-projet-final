@@ -1,0 +1,103 @@
+{% extends "../layout/base.html.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/preferences.css">
+{% endblock %}
+{% block main %}
+    <section>
+        <article>
+            <form action="/preferences/{{user.id}}" method="post">
+                <div class="title">
+                    <label for="preferences">Quelles sont vos préférences</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="videogame" id="videogame">
+                    <label for="videogame">
+                        <span></span>
+                    </label>
+                    <span>Jeux vidéo</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="console" id="console">
+                    <label for="console">
+                        <span></span>
+                    </label>
+                    <span>Console</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="hightech" id="hightech">
+                    <label for="hightech">
+                        <span></span>
+                    </label>
+                    <span>High Tech</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="dvd" id="dvd">
+                    <label for="dvd">
+                        <span></span>
+                    </label>
+                    <span>Films et séries</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="book" id="book">
+                    <label for="book">
+                        <span></span>
+                    </label>
+                    <span>Livres</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="cd" id="cd">
+                    <label for="cd">
+                        <span></span>
+                    </label>
+                    <span>CD</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="figurine" id="figurine">
+                    <label for="figurine">
+                        <span></span>
+                    </label>
+                    <span>Figurine</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="replica" id="replica">
+                    <label for="replica">
+                        <span></span>
+                    </label>
+                    <span>Réplique</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="card" id="card">
+                    <label for="card">
+                        <span></span>
+                    </label>
+                    <span>Carte à collectionner</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="game" id="game">
+                    <label for="game">
+                        <span></span>
+                    </label>
+                    <span>Jeux et jouet</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="goodies" id="goodies">
+                    <label for="goodies">
+                        <span></span>
+                    </label>
+                    <span>Goodies</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="preferences[]" value="other" id="other">
+                    <label for="other">
+                        <span></span>
+                    </label>
+                    <span>Autre</span>
+                </div>
+                <div>
+                    <button type="submit">Valider</button>
+                </div>
+            </form>
+        </article>
+    </section>
+{% endblock %}

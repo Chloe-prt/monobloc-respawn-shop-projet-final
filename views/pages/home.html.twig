@@ -28,10 +28,25 @@
             {% endfor %}
             </div>
         </section>
-        <section class="favori">
-            <div class="title-you">
-                <h2>Pour vous</h2>
-            </div>
-        </section>
+        {% if recommended|length > 0 %}
+            <section class="favori">
+                <div class="title-you">
+                    <h2>Pour vous</h2>
+                </div>
+                <div class="repertory-article">
+                        {% for product in recommended %}
+                        <div class="product-container" onclick="window.location.href='/product/{{product.id}}'">
+                            <img src="/assets/images/uploads/{{product.photo}}" alt="photo">
+                            <p class="title-product">{{product.name}}</p>
+                            <p class="product-user">Publié par : {{product.user.pseudo}}</p>
+                            <div>
+                                <p>{{product.price}}€</p>
+                                <p>{{product.state}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                </div>
+            </section>
+        {% endif %}
     </main>
 {% endblock %}
