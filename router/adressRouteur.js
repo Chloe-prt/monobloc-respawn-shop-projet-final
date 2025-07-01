@@ -134,7 +134,13 @@ const regions = {
 
 
 adressRouteur.get('/adress', authguard, async (req, res) => {
-    res.render('pages/adress.html.twig')
+    const user = await prisma.user.findUnique({
+        where: {
+            id: req.session.user.id
+        }
+    })
+    
+    res.render('pages/adress.html.twig', { formstyle: true, user: user, returnTo: req.headers.referer || '/' })
 })
 
 adressRouteur.post('/adress', authguard, async (req, res) => {
@@ -190,9 +196,17 @@ adressRouteur.get('/adressupdate/:id', authguard, async (req, res) => {
                 id:parseInt(req.params.id)
             }
         })
+        const user = await prisma.user.findUnique({
+            where: {
+                id: req.session.user.id
+            }
+        })
         res.render('pages/adress.html.twig', {
             adressId: adress.id,
-            adress: adress
+            adress: adress,
+            formstyle: true,
+            user: user,
+            returnTo: req.headers.referer || '/'
         })
     } catch (error) {
         console.log(error);

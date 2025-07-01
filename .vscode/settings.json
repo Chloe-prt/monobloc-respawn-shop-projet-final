@@ -4,5 +4,12 @@
     "github.copilot.nextEditSuggestions.fixes": false,
     "editor.experimentalEditContextEnabled": false,
     "editor.inlayHints.enabled": "off",
-    "files.trimTrailingWhitespaceInRegexAndStrings": false
+    "files.trimTrailingWhitespaceInRegexAndStrings": false,
+    "editor.bracketPairColorization.enabled": true,
+    "terminal.integrated.shellIntegration.showCommandGuide": false,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": false,
+    "window.autoDetectColorScheme": false,
+    "color-highlight.useARGB": true,
+    "github.copilot.chat.agent.runTasks": false,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false
 }

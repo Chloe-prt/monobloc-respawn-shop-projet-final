@@ -1,27 +1,38 @@
 <header>
     <div class="header-style">
-        <div {% if isConnected %} class="hidden" {% endif %} class="logo-container">
+        <div {% if isConnected %} class="hidden" {% elseif formstyle %} class="hidden" {% endif %} class="logo-container">
             <img src="/assets/images/logo-respawn-shop-blanc.png" alt="logo respawn shop">
         </div>
         {% if isConnected %}
-        <div class="header-connect">
-            <div class="logo-container-connected">
-                <img src="/assets/images/logo-respawn-shop-blanc.png" alt="logo respawn shop">
+            <div class="header-connect">
+                <div class="logo-container-connected">
+                    <img src="/assets/images/logo-respawn-shop-blanc.png" alt="logo respawn shop">
+                </div>
+                <div class="search-bar">
+                    <form action="/search" method="get">
+                        <input type="text" name="search" id="search-input" placeholder="Recherche" required>
+                        <button type="submit" id="search-button">
+                            <img src="/assets/images/search-loupe-rs.png" alt="logo loupe">
+                        </button>
+                    </form>
+                </div>
+                <div class="link-profil">
+                    <a href="/myprofil">
+                        <img src="/assets/images/uploads/{{user.photo ? user.photo : 'face-perso-rs-png'}}" alt="image lien vers profil">
+                    </a>
+                </div>
             </div>
-            <div class="search-bar">
-                <form action="/search" method="get">
-                    <input type="text" name="search" id="search-input" placeholder="Recherche" required>
-                    <button type="submit" id="search-button">
-                        <img src="/assets/images/search-loupe-rs.png" alt="logo loupe">
-                    </button>
-                </form>
+        {% elseif formstyle %}
+            <div class="form-header">
+                <div class="logo-container-form">
+                    <img src="/assets/images/logo-respawn-shop-blanc.png" alt="logo respawn shop">
+                </div>
+                <div class="cross-close">
+                    <a href="{{ returnTo }}">
+                        <img src="/assets/images/close-rs.png" alt="">
+                    </a>
+                </div>
             </div>
-            <div class="link-profil">
-                <a href="/myprofil">
-                    <img src="/assets/images/face-perso-rs.png" alt="image lien vers profil">
-                </a>
-            </div>
-        </div>
         {% endif %}
     </div>
 </header>

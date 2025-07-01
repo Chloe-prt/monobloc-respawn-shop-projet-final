@@ -3,5 +3,23 @@
     <link rel="stylesheet" href="/assets/css/like.css">
 {% endblock %}
 {% block main %}
-    
+    <main>
+        <section class="like">
+            <div class="like-article">
+                {% for like in likes %}
+                    <div class="like-container">
+                        <a href="/product/{{like.product.id}}">
+                            <img src="/assets/images/uploads/{{like.product.photo}}" alt="photo">
+                        </a>
+                        <p class="title">{{like.product.name}}</p>
+                        <p class="date">{{like.product.date|date('d/m/y H:i')}}</p>
+                        <div>
+                            <p>{{like.product.price}}€</p>
+                            <p>{{like.product.state}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
 {% endblock %}

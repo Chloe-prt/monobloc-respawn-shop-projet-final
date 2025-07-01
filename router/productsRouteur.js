@@ -43,6 +43,8 @@ productsRouteur.post('/sell', authguard, upload.single("photo"), async(req, res)
 
 productsRouteur.get('/product/:id', authguard, async (req, res) => {
     const productId = req.params.id
+    const userId = req.session.user.id
+
     const product = await prisma.products.findUnique({
         where: {
             id: parseInt(productId)
@@ -52,10 +54,19 @@ productsRouteur.get('/product/:id', authguard, async (req, res) => {
                 include: {
                     adress:true
                 }
-            }
+            },
+            likes: true
         }
     })
-    res.render('pages/product.html.twig', { product, isConnected: true, user: req.session.user  })
+    const user = await prisma.user.findUnique({
+            where: {
+                id: req.session.user.id
+            }
+        })
+
+    const liked = product.likes.some(like => like.userId === userId)
+
+    res.render('pages/product.html.twig', { product, isConnected: true, user: user, liked: liked  })
 })
 
 

@@ -10,9 +10,17 @@
 			</div>
 			<div class="title-like">
 				<h2>{{product.name}}</h2>
-				<div class="like-container">
-					<img src="/assets/images/like-hearts-rs.png" alt="Appuyer pour sauvegarder l'article">
-				</div>
+				<form action="/like/{{ product.id }}" method="post">
+					<div class="like-container">
+						<button type="submit">
+							{% if liked %}
+								<img src="/assets/images/like-red-rs.png" alt="Appuyer pour enlever l'article des favoris">
+							{% else %}
+								<img src="/assets/images/like-hearts-rs.png" alt="Appuyer pour sauvegarder l'article">
+							{% endif %}
+						</button>
+					</div>
+				</form>
 			</div>
 			<div>
 				<p>{{product.description}}</p>

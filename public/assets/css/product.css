@@ -60,8 +60,12 @@ body {
                 justify-content: end;
                 width: min-content;
                 padding-left: 10px;
-                img {
-                    width: 30px;
+                button {
+                    background-color: rgba(0, 0, 0, 0);
+                    border: none;
+                    img {
+                        width: 30px;
+                    }
                 }
             }
         }
@@ -127,7 +131,8 @@ body {
                 }
                 p {
                     width: fit-content;
-                    
+                    text-align: end;
+                    font-size: small;
                 }
             }
         }

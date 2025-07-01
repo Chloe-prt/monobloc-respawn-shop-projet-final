@@ -10,4 +10,5 @@ model Products{
     description String
     userId Int
     user User @relation(fields: [userId], references: [id])
+    likes Like[]
 }

@@ -69,7 +69,35 @@
             justify-content: center;
             align-items: center;
             img {
+                width: 45px;
+                height: 45px;
+                border-radius: 100%;
+            }
+        }
+    }
+
+    .form-header {
+        display: flex;
+        justify-content: center;
+        gap: 300px;
+        align-items: center;
+        margin-bottom: 7px;
+        .logo-container-form {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
                 width: 50px;
+            }
+        }
+        .cross-close {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 40px;
             }
         }
     }

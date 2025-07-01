@@ -122,15 +122,21 @@ userRouteur.get('/', authguard, async (req, res) => {
                 user: true
             }
     })
+    const user = await prisma.user.findUnique({
+        where: {
+            id: req.session.user.id
+        }
+    })
     res.render('pages/home.html.twig', {
         products: products,
         recommended: recommendedProducts,
-        isConnected: true
+        isConnected: true,
+        user: user
     })
 })
 
 userRouteur.get('/sell', authguard, async (req, res) => {
-    res.render('pages/sell.html.twig')
+    res.render('pages/sell.html.twig', { formstyle: true, returnTo: req.headers.referer || '/' })
 })
 
 userRouteur.get('/param', authguard, async (req, res) => {
@@ -201,7 +207,8 @@ userRouteur.get('/updateprofil/:id', authguard, async (req, res) => {
         res.render('pages/param-profil.html.twig', {
             userId: user.id,
             user: user,
-            isConnected: true
+            formstyle: true,
+            returnTo: req.headers.referer || '/'
         })
 
     } catch (error) {
@@ -248,7 +255,8 @@ userRouteur.get('/updatepassword/:id', authguard, async (req, res) => {
         res.render('pages/password.html.twig', {
             userId: user.id,
             user: user,
-            isConnected: true
+            formstyle: true, 
+            returnTo: req.headers.referer || '/'
         })
     } catch (error) {
         console.log(error);
@@ -300,7 +308,7 @@ userRouteur.get('/preferences/:id', authguard, async (req, res) => {
             id: req.session.user.id
         }
     })
-    res.render('pages/preferences.html.twig', { isConnected: true, user: user });
+    res.render('pages/preferences.html.twig', { formstyle: true, user: user, returnTo: req.headers.referer || '/' });
 })
 
 userRouteur.post('/preferences/:id', authguard, async (req, res) => {
@@ -337,6 +345,60 @@ userRouteur.post('/preferences/:id', authguard, async (req, res) => {
         res.status(500).send('Erreur lors de la sauvegarde des préférences');
     }
 })
+
+userRouteur.post('/like/:id', authguard, async (req, res) => {
+    try {
+        console.log('bien clické', req.params.id);
+        
+        const userId = req.session.user.id
+        const productId = parseInt(req.params.id)
+
+        const like = await prisma.like.findFirst({
+            where: { userId: userId, productId: productId }
+        })
+
+        if (like) {
+            await prisma.like.delete({
+                where: { id: like.id }
+            })
+        } else {
+            await prisma.like.create({
+                data: {
+                    userId: userId, 
+                    productId: productId
+                }
+            })
+        }
+
+        res.redirect('back')
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('erreur lors du like')
+    }
+    
+})
+
+userRouteur.get('/like', authguard, async (req, res) => {
+    const likes = await prisma.like.findMany({
+        where: {
+            userId: req.session.user.id
+        },
+        include: {
+            product: {
+                include: {
+                    user: true
+                }
+            }
+        }
+    })
+    const user = await prisma.user.findUnique({
+        where: {
+            id: req.session.user.id
+        }
+    })
+    res.render('pages/like.html.twig', { isConnected: true, likes: likes, user: user })
+})
+
 
 
 

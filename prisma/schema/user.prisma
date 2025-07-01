@@ -18,4 +18,5 @@ model User{
     advice Advice[] @relation("advice")
     adviceUser Advice[] @relation("adviceUser")
     preferences UserPreference[]
+    likes Like[]
 }

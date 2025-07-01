@@ -2,17 +2,17 @@ const { PrismaClient } = require('@prisma/client'); // Import correct
 const Prisma = new PrismaClient(); // Initialisation de Prisma
 const authguard = async (req, res, next) => {
     try {
-        // req.session.user = {
-        //     id: 2,
-        //     firstname: 'Pieront',
-        //     lastname: 'Chloé',
-        //     pseudo: 'Zeraldo',
-        //     mail: 'chloe.pieront@gmail.com',
-        //     tel: 663491846,
-        //     photo: null,
-        //     adress: null,
-        //     password: '$2b$10$ZNbMlHwQt6tjfQR7it23O..wiVMMr6bf2VQgZVW7UqZx6tfyJsxFy'
-        // }
+        req.session.user = {
+            id: 2,
+            firstname: 'Pieront',
+            lastname: 'Chloé',
+            pseudo: 'Zeraldo',
+            mail: 'chloe.pieront@gmail.com',
+            tel: 663491846,
+            photo: null,
+            adress: null,
+            password: '$2b$10$ZNbMlHwQt6tjfQR7it23O..wiVMMr6bf2VQgZVW7UqZx6tfyJsxFy'
+        }
         if (req.session.user) {
 
             let user = await Prisma.user.findFirst({
