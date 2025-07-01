@@ -1,0 +1,25 @@
+{% extends "/layout/base.html.twig" %}
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/conversation.css">
+{% endblock %}
+{% block main %}
+    <main>
+        <section class="messages-list">
+            {% for message in conversation.messages %}
+                <div class="message-item {% if message.user.id == user.id %}my-message{% else %}other-message{% endif %}">
+                    <div class="message-text">
+                        {{ message.text }}
+                    </div>
+                    {% if message.photo %}
+                        <div class="photo-container">
+                            <img src="/assets/images/uploads/{{ message.photo }}" alt="">
+                        </div>
+                    {% endif %}
+                    <div class="message-date">
+                        <p>{{ message.date|date('H:i') }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

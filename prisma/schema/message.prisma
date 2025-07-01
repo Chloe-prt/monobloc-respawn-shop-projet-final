@@ -1,0 +1,10 @@
+model Message {
+    id Int @id @default(autoincrement())
+    text String
+    photo String?
+    date DateTime @default(now())
+    userId Int
+    user User @relation(fields: [userId], references: [id])
+    conversation Conversation @relation(fields: [conversationId], references: [id])
+    conversationId Int
+}

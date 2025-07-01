@@ -12,13 +12,39 @@
                 <a href="/sell">
                     <img src="/assets/images/add-rs.png" alt="plus, ajout d'annonce">
                 </a>
-                <a href="">
+                <a href="/message">
                     <img src="/assets/images/chat-bull-rs.png" alt="logo message, discussion avec les contacts">
                 </a>
                 <a href="/param">
                     <img src="/assets/images/param-engrnage-rs.png" alt="logo planete, forum">
                 </a>
             </nav>
+        </div>
+    </div>
+
+{% elseif isConv %}
+    <div>
+        <div class="nav-style">
+            <div class="com-container">
+                <form action="/sendmsg" method="post">
+                    <input type="hidden" name="conversationId" value="{{ conversation.id }}">
+                    <div>
+                        <label for="photo">
+                            <img src="/assets/images/add-rs.png" alt="bouton d'ajout de photo">
+                        </label>
+                        <input type="file" name="photo" accept="images/*" autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="text"></label>
+                        <textarea name="text" id="text" placeholder="Envoyer un message"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit">
+                            <img src="/assets/images/send-rs.png" alt="">
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 {% endif %}

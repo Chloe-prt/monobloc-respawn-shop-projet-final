@@ -72,6 +72,8 @@
                 width: 45px;
                 height: 45px;
                 border-radius: 100%;
+                object-fit: cover;
+                object-position: center;
             }
         }
     }
@@ -98,6 +100,54 @@
             align-items: center;
             img {
                 width: 40px;
+            }
+        }
+    }
+
+    .conv-header {
+        .lead {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 7px;
+            height: 70px;
+            gap: 40px;
+            .return-profil {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .arrow-back {
+                    img {
+                        width: 40px;
+                    }
+                }
+                .profil-container {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    width: 270px;
+                    h3 {
+                        font-size: large;
+                    }
+                    p {
+                        font-size: medium;
+                    }
+                    .photo-profil {
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                }
+            }
+            .points {
+                img {
+                    width: 40px;
+                    transform: translateX(25%);
+                }
             }
         }
     }

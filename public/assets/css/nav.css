@@ -26,4 +26,45 @@
             }
         }
     }
+
+    .com-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 9px;
+        height: 70px;
+        form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            div {
+                img {
+                    width: 50px;
+                }
+                input[type="file"] {
+                    display: none;
+                }
+                textarea {
+                    height: 30px;
+                    width: 300px;
+                    border-radius: 20px;
+                    border: none;
+                    padding-inline: 10px;
+                    color: black;
+                    vertical-align: middle;
+                    padding-top: 12px;
+                }
+                textarea:focus {
+                    border: none;
+                    outline: none;
+                }
+                button {
+                    background-color: rgba(255, 255, 255, 0);
+                    border: none;
+                }
+            }
+
+        }
+    }
 }

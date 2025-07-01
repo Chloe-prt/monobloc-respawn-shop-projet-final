@@ -1,6 +1,6 @@
 <header>
     <div class="header-style">
-        <div {% if isConnected %} class="hidden" {% elseif formstyle %} class="hidden" {% endif %} class="logo-container">
+        <div {% if isConnected %} class="hidden" {% elseif formstyle %} class="hidden" {% elseif isConv %} class="hidden" {% endif %} class="logo-container">
             <img src="/assets/images/logo-respawn-shop-blanc.png" alt="logo respawn shop">
         </div>
         {% if isConnected %}
@@ -31,6 +31,28 @@
                     <a href="{{ returnTo }}">
                         <img src="/assets/images/close-rs.png" alt="">
                     </a>
+                </div>
+            </div>
+        {% elseif isConv and otherUser %}
+            <div class="conv-header">
+                <div class="lead">
+                    <div class="return-profil">
+                        <a href="" class="arrow-back">
+                            <img src="/assets/images/arrow-back-rs.png" alt="">
+                        </a>
+                        <div class="profil-container">
+                            <a href="" class="photo-profil">
+                                <img src="/assets/images/uploads/{{ otherUser.photo ? otherUser.photo : "default-avatar.jpg" }}" alt="photo de profil">
+                            </a>
+                            <div>
+                                <h3>{{ otherUser.pseudo }}</h3>
+                                <p>{{ otherUser.firstname }} {{ otherUser.lastname }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="points">
+                        <img src="/assets/images/3point-rs.png" alt="option de discussion">
+                    </div>
                 </div>
             </div>
         {% endif %}

@@ -250,7 +250,7 @@ adressRouteur.post('/adressupdate', authguard, async (req, res) => {
 
         await prisma.user.update({
             where: {
-                id: req.session.user.id // ID de l'utilisateur connecté
+                id: req.session.user.id 
             },
             data: {
                 adress: {

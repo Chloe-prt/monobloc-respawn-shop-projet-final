@@ -62,7 +62,7 @@ productsRouteur.get('/product/:id', authguard, async (req, res) => {
             where: {
                 id: req.session.user.id
             }
-        })
+    })
 
     const liked = product.likes.some(like => like.userId === userId)
 

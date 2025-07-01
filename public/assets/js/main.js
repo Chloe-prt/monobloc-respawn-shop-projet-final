@@ -42,3 +42,8 @@ labels.forEach((label, index) => {
         activeInputIndex = index; 
     });
 });
+
+const messagesList = document.getElementById('messages-list');
+if (messagesList) {
+    messagesList.scrollTop = messagesList.scrollHeight;
+}

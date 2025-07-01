@@ -1,0 +1,72 @@
+@font-face{
+    font-family: 'montserrat';
+    src: url(/assets/font/Montserrat/static/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url(/assets/font/Montserrat/static/Montserrat-Bold.ttf);
+}
+
+*{
+    font-family: 'montserrat';
+    color: white;
+    margin: 0%;
+}
+
+body {
+    background-color: #282828;
+}
+
+main {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    .messages-list {
+        width: 400px;
+        height: 78vh;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: flex-end;
+        .message-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+            .message-date {
+                color: rgba(255, 255, 255, 0.692);
+                font-size: 10px;
+                margin-right: 2px;
+            }
+        }
+        .my-message {
+            align-items: flex-end; 
+            .message-text {
+                background-color: red;
+                align-self: flex-end;
+                padding: 10px;
+                border-radius: 10px;
+                min-width: 100px;
+                max-width: 250px;
+                min-height: 30px;
+                word-break: break-word;
+                box-sizing: border-box;
+            }
+        }
+        .other-message {
+            .message-text {
+                background-color: white;
+                color: black;
+                align-self: flex-start;
+                padding: 10px;
+                border-radius: 10px;
+                min-width: 100px;
+                max-width: 250px;
+                min-height: 30px;
+                word-break: break-word;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
