@@ -2,13 +2,10 @@ let btnModals = document.querySelectorAll('.btn-modal');
 let modals = document.querySelectorAll('.modal-option');
 let openIndex = -1;
 
-// Gère l'ouverture de la bonne modale
 btnModals.forEach((btn, i) => {
     btn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Empêche la propagation du clic vers le document
-        // Ferme toutes les modales
+        e.stopPropagation(); 
         modals.forEach((modal) => modal.classList.add('hidden'));
-        // Ouvre la bonne
         modals[i].classList.remove('hidden');
         openIndex = i;
     });

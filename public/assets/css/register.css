@@ -65,6 +65,11 @@ body {
                 }
             }
 
+            .error-message {
+                background-color: #282828;
+                box-shadow: none;
+            }
+
             div {
                 display: flex;
                 flex-direction: column;

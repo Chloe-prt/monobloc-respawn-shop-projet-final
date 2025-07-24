@@ -100,6 +100,7 @@ body {
                 flex-direction: row;
                 :last-child {
                     color: rgba(255, 255, 255, 0.695);
+                    font-size: 10px;
                 }
             }
             

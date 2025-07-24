@@ -90,7 +90,7 @@ body {
             div {
                 background-color: #282828;
                 box-shadow: none;
-                height: 1px;
+                height: 2px;
                 padding: 0%;
                 display: flex;
                 align-items: center;
@@ -100,6 +100,7 @@ body {
             .first-bar, .seconde-bar {
                 background-color: white;
                 width: 500px;
+                height: 1px;
             }
 
         }

@@ -25,7 +25,7 @@
                     </div>
                     <div>
                         <label for="price">Prix</label>
-                        <input id="price" type="text" name="price" value="{{ product.price ?? '' }}" required>
+                        <input id="price" type="text" pattern="\d+" inputmode="numeric" name="price" value="{{ product.price ?? '' }}" required>
                     </div>
                     <div>
                         <label for="category">Catégorie</label>

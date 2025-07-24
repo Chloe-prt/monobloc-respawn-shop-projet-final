@@ -13,8 +13,8 @@ model User{
 
     password String
     products Products[]
-    advice Advice[] @relation("advice")
-    adviceUser Advice[] @relation("adviceUser")
+    sentAdvice Advice[] @relation("advice")
+    receiverAdvice Advice[] @relation("adviceUser")
     preferences UserPreference[]
     likes Like[]
     sentMessages Message[] @relation("SentMessages")

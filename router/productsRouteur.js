@@ -129,7 +129,7 @@ productsRouteur.post('/productupdate/:id', upload.single("photo"), authguard, as
 
 productsRouteur.get('/search', authguard, async (req, res) => {
     const search = req.query.search
-    console.log(search);
+
     try {
         const results = await prisma.products.findMany({
             where: {
@@ -144,8 +144,12 @@ productsRouteur.get('/search', authguard, async (req, res) => {
                 user: true
             }
         })
-        console.log(results);
-        res.render('pages/search.html.twig', {results, search, isConnected: true})
+        const user = await prisma.user.findUnique({
+            where : {
+                id : req.session.user.id
+            }
+        })
+        res.render('pages/search.html.twig', {results, search, user, isConnected: true})
     } catch (error) {
         console.log(error);
         res.status(500).send("marche pas");

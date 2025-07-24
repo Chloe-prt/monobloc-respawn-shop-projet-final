@@ -21,7 +21,10 @@
                 </div>
                 <div class="photo-update">
                     <label class="label-update" for="photo">Modifier ma photo</label>
-                    <input class="hidden input-update" type="file" id="photo" name="photo" accept="images/*" autocomplete="off" required>
+                    <input class="hidden input-update" type="file" id="photo" name="photo" accept="images/*" autocomplete="off">
+                    {% if user.photo %}
+                        <input type="hidden" name="existingPhoto" value="{{ user.photo }}">
+                    {% endif %}
                 </div>
                 <div class="mail-update">
                     <label class="label-update" for="mail">Modifier mon mail</label>
@@ -29,7 +32,7 @@
                 </div>
                 <div class="tel-update">
                     <label class="label-update" for="tel">Modifier mon numéro de téléphone</label>
-                    <input class="hidden input-update" placeholder="Nouveau numéro de téléphone" type="text" id="tel" name="tel" value="{{ user.tel }}" required>
+                    <input class="hidden input-update" placeholder="Nouveau numéro de téléphone" type="text" id="tel" name="tel" value="0{{ user.tel }}" required>
                 </div>
                 <div>
                     <button type="submit">Valider</button>

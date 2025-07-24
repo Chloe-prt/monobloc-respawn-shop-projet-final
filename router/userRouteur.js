@@ -5,15 +5,28 @@ const bcrypt = require('bcrypt'); // Import de bcrypt
 const authguard = require("../services/authguard.js");
 const upload = require('../services/multer.js')
 
+const mailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,}$/; 
+const telRegex = /^0[1-9]\d{8}$/;
+
 userRouteur.get('/register', async (req, res) => {
     res.render('pages/register.html.twig');
 });
 
 userRouteur.post('/register', async (req, res) => {
     try {
-        console.log(req.body);
-
+        
         const { firstname, lastname, pseudo, mail, tel, password, confpass } = req.body;
+
+        if (!mailRegex.test(mail)) {
+            throw { mail: "Email invalide" };
+        }
+        if (!passwordRegex.test(password)) {
+            throw { password: "Le mot de passe doit faire au moins 8 caractères, contenir une lettre et un chiffre" };
+        }
+        if (!telRegex.test(tel)) {
+            throw { tel: "Numéro de téléphone invalide" };
+        }
 
         if (password !== confpass) {
             console.log(password);
@@ -29,10 +42,11 @@ userRouteur.post('/register', async (req, res) => {
                     pseudo,
                     mail,
                     tel: parseInt(tel),
-                    password: bcrypt.hashSync(password, 10) // Hashage du mot de passe
+                    password: bcrypt.hashSync(password, 10) 
                 }
             });
 
+            console.log(req.body);
             res.redirect('/login');
         }
     } catch (error) {
@@ -219,7 +233,13 @@ userRouteur.get('/updateprofil/:id', authguard, async (req, res) => {
 
 userRouteur.post('/updateprofil/:id', authguard, upload.single("photo"), async (req, res) => {
     try {
-        const { firstname, lastname, pseudo, mail, tel } = req.body;
+        const { firstname, lastname, pseudo, photo, mail, tel } = req.body;
+        if (!mailRegex.test(mail)) {
+            throw { mail: "Email invalide" };
+        }
+        if (!telRegex.test(tel)) {
+            throw { tel: "Numéro de téléphone invalide" };
+        }
         const user = await prisma.user.update({
             where: {
                 id: parseInt(req.params.id)
@@ -230,7 +250,7 @@ userRouteur.post('/updateprofil/:id', authguard, upload.single("photo"), async (
                 pseudo,
                 mail,
                 tel: parseInt(tel),
-                photo: req.file ? req.file.filename : undefined
+                photo: req.file ? req.file.filename : req.body.existingPhoto
             }
         })
         res.redirect('/myprofil');
@@ -238,8 +258,8 @@ userRouteur.post('/updateprofil/:id', authguard, upload.single("photo"), async (
         console.log(error);
         res.render('pages/param-profil.html.twig', {
             userId: req.session.user.id,
-            user: req.session.user,
-            isConnected: true
+            user: req.session.user
+
         });
     }
 })
@@ -266,9 +286,13 @@ userRouteur.get('/updatepassword/:id', authguard, async (req, res) => {
 
 userRouteur.post('/updatepassword/:id', authguard, async (req, res) => {
     try {
-        console.log(req.body);
-        
+
         const { oldPassword, newPassword, confirmPassword } = req.body
+
+        if (!passwordRegex.test(newPassword)) {
+            throw { newPassword: "Le mot de passe doit faire au moins 8 caractères, contenir une lettre et un chiffre" };
+        }
+
         if (await bcrypt.compare(oldPassword, req.session.user.password)) {
             if (newPassword == confirmPassword) {
                 const user = await prisma.user.update({
@@ -280,8 +304,7 @@ userRouteur.post('/updatepassword/:id', authguard, async (req, res) => {
                     }
                 }) 
             } else {
-                console.log(newPassword);
-                console.log(confirmPassword);
+
                 throw { confirmPassword: "Les mots de passe ne correspondent pas"}
             }
         } else {
@@ -348,8 +371,7 @@ userRouteur.post('/preferences/:id', authguard, async (req, res) => {
 
 userRouteur.post('/like/:id', authguard, async (req, res) => {
     try {
-        console.log('bien clické', req.params.id);
-        
+
         const userId = req.session.user.id
         const productId = parseInt(req.params.id)
 
@@ -375,7 +397,7 @@ userRouteur.post('/like/:id', authguard, async (req, res) => {
         console.log(error);
         res.status(500).send('erreur lors du like')
     }
-    
+
 })
 
 userRouteur.get('/like', authguard, async (req, res) => {

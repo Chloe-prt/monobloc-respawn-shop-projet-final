@@ -1,49 +1,65 @@
 {% extends "/layout/base.html.twig" %}
 {% block style %}
-        <link rel="stylesheet" href="/assets/css/register.css">
+	<link rel="stylesheet" href="/assets/css/register.css">
 {% endblock %}
 {% block main %}
-    <section class="register">
-        <article class='register-container'>
-            <form action="/register" method="post" class="register-form">
-                <div class='title-register'>
-                    <h1>Inscription</h1>
-                </div>
-                <div class="name-register">
-                    <label for="lastname">Nom</label>
-                    <input id="lastname" type="text" name="lastname">
-                </div>
-                <div class="fname-register">
-                    <label for="firstname">Prénom</label>
-                    <input id="firstname" type="text" name="firstname">
-                </div>
-                <div class="pseudo-register">
-                    <label for="pseudo">Pseudo</label>
-                    <input id="pseudo" type="text" name="pseudo">
-                </div>
-                <div class="mail-register">
-                    <label for="mail">Mail</label>
-                    <input id="mail" type="text" name="mail">
-                </div>
-                <div class="tel-register">
-                    <label for="tel">Téléphone</label>
-                    <input id="tel" type="text" name="tel">
-                </div>
-                <div class="password-register">
-                    <label for="password">Mot de passe</label>
-                    <input id="password" type="password" name="password">
-                </div>
-                <div class="confpass-register">
-                    <label for="confpass">Confirmer le mot de passe</label>
-                    <input id="confpass" type="password" name="confpass">
-                </div>
-                <div class="end-register">
-                    <a href="/login">Se connecter</a>
-                </div>
-                <div class="valid-register">
-                    <button type="submit">Envoyer</button>
-                </div>
-            </form>
-        </article>
-    </section>
+	<section class="register">
+		<article class='register-container'>
+			<form action="/register" method="post" class="register-form">
+				<div class='title-register'>
+					<h1>Inscription</h1>
+				</div>
+				<div class="name-register">
+					<label for="lastname">Nom</label>
+					<input id="lastname" type="text" name="lastname">
+				</div>
+				<div class="fname-register">
+					<label for="firstname">Prénom</label>
+					<input id="firstname" type="text" name="firstname">
+				</div>
+				<div class="pseudo-register">
+					<label for="pseudo">Pseudo</label>
+					<input id="pseudo" type="text" name="pseudo">
+				</div>
+				<div class="mail-register">
+					<label for="mail">Mail</label>
+					<input id="mail" type="text" name="mail">
+				</div>
+				<div class="tel-register">
+					<label for="tel">Téléphone</label>
+					<input id="tel" type="text" name="tel">
+				</div>
+				<div class="password-register">
+					<label for="password">Mot de passe</label>
+					<input id="password" type="password" name="password">
+				</div>
+				<div class="confpass-register">
+					<label for="confpass">Confirmer le mot de passe</label>
+					<input id="confpass" type="password" name="confpass">
+				</div>
+				<div class="end-register">
+					<a href="/login">Se connecter</a>
+				</div>
+				{% if error %}
+					<div class="error-message">
+						{% if error.mail %}
+							<p>{{ error.mail }}</p>
+						{% endif %}
+						{% if error.password %}
+							<p>{{ error.password }}</p>
+						{% endif %}
+						{% if error.tel %}
+							<p>{{ error.tel }}</p>
+						{% endif %}
+						{% if error.confpass %}
+							<p>{{ error.confpass }}</p>
+						{% endif %}
+					</div>
+				{% endif %}
+				<div class="valid-register">
+					<button type="submit">Envoyer</button>
+				</div>
+			</form>
+		</article>
+	</section>
 {% endblock %}
