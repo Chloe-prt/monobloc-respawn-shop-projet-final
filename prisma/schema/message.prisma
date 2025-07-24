@@ -1,10 +1,9 @@
 model Message {
-    id Int @id @default(autoincrement())
-    text String
-    photo String?
-    date DateTime @default(now())
-    userId Int
-    user User @relation(fields: [userId], references: [id])
-    conversation Conversation @relation(fields: [conversationId], references: [id])
-    conversationId Int
+  id         Int      @id @default(autoincrement())
+  text       String   @db.Text
+  date       DateTime @default(now())
+  senderId   Int
+  sender     User     @relation("SentMessages", fields: [senderId], references: [id])
+  receiverId Int
+  receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
 }

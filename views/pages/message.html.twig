@@ -2,3 +2,32 @@
 {% block style %}
     <link rel="stylesheet" href="/assets/css/message.css">
 {% endblock %}
+{% block main %}
+    <main>
+        <section class="list-conv">
+            {% set displayed = [] %}
+            {% for conv in conversation %}
+                {% set otherUser = conv.senderId == user.id ? conv.receiver : conv.sender %}
+                {% if otherUser.id not in displayed %}
+                    <a href="/conv/{{ otherUser.id }}">
+                        <div class="conv-container">
+                            <div class="img-container">
+                                <img src="/assets/images/uploads/{{ otherUser.photo ? otherUser.photo : 'default-avatar.jpg' }}" alt="">
+                            </div>
+                            <div class="text-container">
+                                <div class="pseudo-container">
+                                    <p>{{otherUser.pseudo}}</p>
+                                </div>
+                                <div class="last-messages">
+                                    <p>{{conv.text|slice(0, 30)}}{% if conv.text|length > 30 %}...{% endif %}</p>
+                                    <p>{{conv.date|date('d F Y')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% set displayed = displayed|merge([otherUser.id]) %}
+                {% endif %}
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

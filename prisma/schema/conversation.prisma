@@ -1,9 +1,0 @@
-model Conversation {
-    id Int @id @default(autoincrement())
-    user1 User @relation("User1Conversations", fields: [user1Id], references: [id])
-    user1Id Int
-    user2 User @relation("User2Conversations", fields: [user2Id], references: [id])
-    user2Id Int
-    messages Message[]
-    date DateTime @default(now())
-}

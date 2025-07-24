@@ -4,17 +4,12 @@
 {% endblock %}
 {% block main %}
     <main>
-        <section class="messages-list">
-            {% for message in conversation.messages %}
-                <div class="message-item {% if message.user.id == user.id %}my-message{% else %}other-message{% endif %}">
+        <section class="messages-list" id="messagesList">
+            {% for message in messages %}
+                <div class="message-container {% if message.senderId == sessionUserId %} my-message {% else %} other-message {% endif %}">
                     <div class="message-text">
-                        {{ message.text }}
+                        <p>{{ message.text }}</p>
                     </div>
-                    {% if message.photo %}
-                        <div class="photo-container">
-                            <img src="/assets/images/uploads/{{ message.photo }}" alt="">
-                        </div>
-                    {% endif %}
                     <div class="message-date">
                         <p>{{ message.date|date('H:i') }}</p>
                     </div>

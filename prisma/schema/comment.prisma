@@ -1,8 +1,0 @@
-model Comment{
-    id Int @id @default(autoincrement())
-    comtext String
-    articleId Int 
-    article Article @relation(fields: [articleId], references: [id])
-    userId Int 
-    user User @relation(fields: [userId], references: [id])
-}

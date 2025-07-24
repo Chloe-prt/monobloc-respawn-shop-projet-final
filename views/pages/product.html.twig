@@ -69,10 +69,9 @@
 		{% else %}
 			<div class="buy-contact">
 				<a href="">Acheter</a>
-				<a href="/conversation/0?otherUserId={{ product.user.id }}">Contacter le vendeur</a>
+				<a href="/conv/{{product.user.id}}">Contacter le vendeur</a>
 			</div>
 		{% endif %}
-		
-		
+
 	</section>
 {% endblock %}

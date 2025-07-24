@@ -43,7 +43,7 @@ labels.forEach((label, index) => {
     });
 });
 
-const messagesList = document.getElementById('messages-list');
+const messagesList = document.getElementById('messagesList');
 if (messagesList) {
     messagesList.scrollTop = messagesList.scrollHeight;
 }

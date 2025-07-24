@@ -26,7 +26,7 @@
     <div>
         <div class="nav-style">
             <div class="com-container">
-                <form action="/sendmsg" method="post">
+                <form action="/sendmsg/{{userMsg.id}}" method="post">
                     <input type="hidden" name="conversationId" value="{{ conversation.id }}">
                     <div>
                         <label for="photo">

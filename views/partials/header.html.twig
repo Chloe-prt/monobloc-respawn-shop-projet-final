@@ -18,7 +18,7 @@
                 </div>
                 <div class="link-profil">
                     <a href="/myprofil">
-                        <img src="/assets/images/uploads/{{user.photo ? user.photo : 'face-perso-rs-png'}}" alt="image lien vers profil">
+                        <img src="/assets/images/uploads/{{user.photo ? user.photo : 'face-perso-rs.png'}}" alt="image lien vers profil">
                     </a>
                 </div>
             </div>
@@ -33,20 +33,20 @@
                     </a>
                 </div>
             </div>
-        {% elseif isConv and otherUser %}
+        {% elseif isConv %}
             <div class="conv-header">
                 <div class="lead">
                     <div class="return-profil">
-                        <a href="" class="arrow-back">
+                        <a href="/message" class="arrow-back">
                             <img src="/assets/images/arrow-back-rs.png" alt="">
                         </a>
                         <div class="profil-container">
                             <a href="" class="photo-profil">
-                                <img src="/assets/images/uploads/{{ otherUser.photo ? otherUser.photo : "default-avatar.jpg" }}" alt="photo de profil">
+                                <img src="/assets/images/uploads/{{ userMsg.photo ? userMsg.photo : "default-avatar.jpg" }}" alt="photo de profil">
                             </a>
                             <div>
-                                <h3>{{ otherUser.pseudo }}</h3>
-                                <p>{{ otherUser.firstname }} {{ otherUser.lastname }}</p>
+                                <h3>{{ userMsg.pseudo }}</h3>
+                                <p>{{ userMsg.firstname }} {{ userMsg.lastname }}</p>
                             </div>
                         </div>
                     </div>

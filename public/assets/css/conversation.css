@@ -28,8 +28,10 @@ main {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        justify-content: flex-end;
-        .message-item {
+        scrollbar-width: none;  
+        /* justify-content: flex-end; */
+        overflow-y: auto;
+        .message-container {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -38,6 +40,7 @@ main {
                 color: rgba(255, 255, 255, 0.692);
                 font-size: 10px;
                 margin-right: 2px;
+                margin-left: 2px;
             }
         }
         .my-message {
@@ -56,7 +59,7 @@ main {
         }
         .other-message {
             .message-text {
-                background-color: white;
+                background-color: #1E1E1E;
                 color: black;
                 align-self: flex-start;
                 padding: 10px;
@@ -70,3 +73,5 @@ main {
         }
     }
 }
+
+
